@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clínica Sorriso Perfeito | Odontologia Moderna</title>
+  
+  <!-- Favicon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+  <!-- Fontes Google -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- AOS Animation -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <!-- CSS personalizado -->
+  <style>
+    :root {
+      --primary-color: #3c4e69;
+      --secondary-color: #8ba4d5;
+      --accent-color: #ff7e7e;
+      --accent-light: #ff9a69;
+      --light-color: #f8f9fa;
+      --gradient: linear-gradient(135deg, #8ba4d5 0%, #3c4e69 100%);
+      --gradient-accent: linear-gradient(135deg, #ff9a69 0%, #ff7e7e 100%);
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: #333;
+      overflow-x: hidden;
+      background-color: #f8f9fa;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      color: var(--primary-color);
+    }
+    
+    /* Header */
+    .header-dentista {
+      background-color: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .header-dentista.scrolled {
+      background-color: white;
+      padding: 10px 0;
+    }
+    
+    .navbar-brand-dentista {
+      font-weight: 700;
+      font-size: 1.8rem;
+      color: var(--primary-color) !important;
+    }
+    
+    .navbar-brand-dentista span {
+      color: var(--accent-color);
+    }
+    
+    .nav-link-dentista {
+      color: var(--primary-color) !important;
+      font-weight: 500;
+      margin: 0 10px;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+    
+    .nav-link-dentista:hover, .nav-link-dentista.active {
+      color: var(--accent-color) !important;
+    }
+    
+    .nav-link-dentista.active::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: var(--accent-color);
+      border-radius: 2px;
+    }
+    
+    /* Hero Section */
+    .hero-dentista {
+      min-height: 100vh;
+      background: url('https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+      display: flex;
+      align-items: center;
+      padding-top: 80px;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero-dentista::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--gradient);
+      opacity: 0.9;
+      z-index: 0;
+    }
+    
+    .hero-content-dentista {
+      position: relative;
+      z-index: 1;
+    }
+    
+    .hero-title-dentista {
+      font-size: 3.5rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      color: white;
+    }
+    
+    .hero-subtitle-dentista {
+      font-size: 1.5rem;
+      font-weight: 300;
+      margin-bottom: 2.5rem;
+      max-width: 700px;
+      color: rgba(255, 255, 255, 0.9);
+    }
+    
+    .btn-dentista {
+      background: var(--gradient-accent);
+      color: white;
+      border: none;
+      font-weight: 600;
+      padding: 12px 30px;
+      border-radius: 50px;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+    
+    .btn-dentista:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+      color: white;
+    }
+    
+    .btn-outline-dentista {
+      border: 2px solid white;
+      color: white;
+      background: transparent;
+      font-weight: 600;
+      padding: 12px 30px;
+      border-radius: 50px;
+      transition: all 0.3s ease;
+    }
+    
+    .btn-outline-dentista:hover {
+      background: white;
+      color: var(--primary-color);
+    }
+    
+    /* Serviços */
+    .servicos-dentista {
+      padding: 100px 0;
+      background-color: white;
+    }
+    
+    .servico-card {
+      border: none;
+      border-radius: 15px;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      background: white;
+      height: 100%;
+    }
+    
+    .servico-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+    }
+    
+    .servico-icon {
+      font-size: 2.5rem;
+      color: var(--accent-color);
+      margin-bottom: 1rem;
+    }
+    
+    /* Sobre */
+    .sobre-dentista {
+      padding: 100px 0;
+      background-color: var(--light-color);
+    }
+    
+    .doutora-img {
+      border-radius: 15px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+    
+    .doutora-img:hover {
+      transform: scale(1.02);
+    }
+    
+    /* Depoimentos */
+    .depoimentos-dentista {
+      padding: 100px 0;
+      background: var(--gradient);
+      color: white;
+    }
+    
+    .depoimento-card {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 15px;
+      padding: 30px;
+      transition: all 0.3s ease;
+    }
+    
+    .depoimento-card:hover {
+      background: rgba(255, 255, 255, 0.15);
+    }
+    
+    .client-img {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid white;
+    }
+    
+    /* Contato */
+    .contato-dentista {
+      padding: 100px 0;
+      background-color: white;
+    }
+    
+    .form-control-dentista {
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 15px;
+      transition: all 0.3s ease;
+    }
+    
+    .form-control-dentista:focus {
+      border-color: var(--secondary-color);
+      box-shadow: 0 0 0 0.25rem rgba(139, 164, 213, 0.25);
+    }
+    
+    /* Footer */
+    .footer-dentista {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 50px 0 20px;
+    }
+    
+    .footer-link {
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    .footer-link:hover {
+      color: white;
+    }
+    
+    .social-icon-dentista {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.1);
+      color: white;
+      margin-right: 10px;
+      transition: all 0.3s ease;
+    }
+    
+    .social-icon-dentista:hover {
+      background-color: var(--accent-color);
+      transform: translateY(-3px);
+    }
+    
+    /* Efeitos globais */
+    .section-title-dentista {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 50px;
+    }
+    
+    .section-title-dentista:after {
+      content: '';
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 50px;
+      height: 3px;
+      background: var(--gradient-accent);
+      border-radius: 3px;
+    }
+    
+    .text-accent {
+      color: var(--accent-color);
+    }
+    
+    .bg-accent {
+      background-color: var(--accent-color);
+    }
+    
+    /* Responsividade */
+    @media (max-width: 768px) {
+      .hero-title-dentista {
+        font-size: 2.5rem;
+      }
+      
+      .hero-subtitle-dentista {
+        font-size: 1.2rem;
+      }
+      
+      .section-title-dentista {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header-dentista">
+    <nav class="navbar navbar-expand-lg py-3">
+      <div class="container">
+        <a class="navbar-brand navbar-brand-dentista" href="#">
+          NOME<span>DO</span>CONSULTORIO
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item"><a class="nav-link nav-link-dentista active" href="#home">Início</a></li>
+            <li class="nav-item"><a class="nav-link nav-link-dentista" href="#servicos">Serviços</a></li>
+            <li class="nav-item"><a class="nav-link nav-link-dentista" href="#sobre">Sobre</a></li>
+            <li class="nav-item"><a class="nav-link nav-link-dentista" href="#depoimentos">Depoimentos</a></li>
+            <li class="nav-item"><a class="nav-link nav-link-dentista" href="#contato">Contato</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-dentista" id="home">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-7 hero-content-dentista" data-aos="fade-right">
+          <h1 class="hero-title-dentista">Seu sorriso perfeito começa aqui</h1>
+          <p class="hero-subtitle-dentista">
+            Cuidados odontológicos personalizados com tecnologia de ponta e atendimento humanizado para toda a família.
+          </p>
+          <div class="d-flex gap-3">
+            <a href="#contato" class="btn btn-dentista">Agendar Consulta</a>
+            <a href="tel:+5511999999999" class="btn btn-outline-dentista">
+              <i class="bi bi-telephone me-2"></i>Ligar agora
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Serviços -->
+  <section class="servicos-dentista" id="servicos">
+    <div class="container">
+      <h2 class="text-center section-title-dentista" data-aos="fade-up">Nossos Serviços</h2>
+      <p class="text-center mb-5 lead" data-aos="fade-up" data-aos-delay="100">Cuidados completos para sua saúde bucal</p>
+      
+      <div class="row g-4">
+        <!-- Clareamento Dental -->
+        <div class="col-md-6 col-lg-4" data-aos="fade-up">
+          <div class="servico-card p-4 text-center">
+            <i class="bi bi-brightness-high servico-icon"></i>
+            <h3 class="mb-3">Clareamento Dental</h3>
+            <p class="text-muted">
+              Técnicas avançadas para clarear seus dentes em até 8 tons, com segurança e resultados imediatos.
+            </p>
+            <a href="#contato" class="btn btn-outline-primary mt-3">Saiba mais</a>
+          </div>
+        </div>
+        
+        <!-- Ortodontia -->
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="servico-card p-4 text-center">
+            <i class="bi bi-tooth servico-icon"></i>
+            <h3 class="mb-3">Ortodontia</h3>
+            <p class="text-muted">
+              Aparelhos fixos, móveis e alinhadores invisíveis para corrigir a posição dos dentes e melhorar sua mordida.
+            </p>
+            <a href="#contato" class="btn btn-outline-primary mt-3">Saiba mais</a>
+          </div>
+        </div>
+        
+        <!-- Implantes -->
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="servico-card p-4 text-center">
+            <i class="bi bi-shield-plus servico-icon"></i>
+            <h3 class="mb-3">Implantes Dentários</h3>
+            <p class="text-muted">
+              Solução definitiva para substituir dentes perdidos, com tecnologia de última geração e materiais de qualidade.
+            </p>
+            <a href="#contato" class="btn btn-outline-primary mt-3">Saiba mais</a>
+          </div>
+        </div>
+        
+        <!-- Limpeza -->
+        <div class="col-md-6 col-lg-4" data-aos="fade-up">
+          <div class="servico-card p-4 text-center">
+            <i class="bi bi-droplet servico-icon"></i>
+            <h3 class="mb-3">Limpeza Profissional</h3>
+            <p class="text-muted">
+              Remoção de tártaro e polimento dental para prevenir cáries, gengivite e manter seu sorriso saudável.
+            </p>
+            <a href="#contato" class="btn btn-outline-primary mt-3">Saiba mais</a>
+          </div>
+        </div>
+        
+        <!-- Odontopediatria -->
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="servico-card p-4 text-center">
+            <i class="bi bi-emoji-smile servico-icon"></i>
+            <h3 class="mb-3">Odontopediatria</h3>
+            <p class="text-muted">
+              Atendimento especializado para crianças, com técnicas lúdicas que transformam a ida ao dentista em diversão.
+            </p>
+            <a href="#contato" class="btn btn-outline-primary mt-3">Saiba mais</a>
+          </div>
+        </div>
+        
+        <!-- Estética -->
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="servico-card p-4 text-center">
+            <i class="bi bi-stars servico-icon"></i>
+            <h3 class="mb-3">Estética Dental</h3>
+            <p class="text-muted">
+              Lentes de contato, facetas e restaurações estéticas para um sorriso perfeito e natural.
+            </p>
+            <a href="#contato" class="btn btn-outline-primary mt-3">Saiba mais</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sobre -->
+  <section class="sobre-dentista py-5" id="sobre">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6 mb-5 mb-lg-0" data-aos="fade-right">
+          <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Dra. Ana Silva" class="img-fluid doutora-img">
+        </div>
+        
+        <div class="col-lg-6" data-aos="fade-left">
+          <h2 class="section-title-dentista">Dra. SEU NOME</h2>
+          <p class="lead">Especialista em Odontologia Estética e Reabilitação Oral</p>
+          
+          <p>Formada pela Universidade de RECIFE com especialização em Dentística Restauradora e Estética Dental. Com mais de 15 anos de experiência, dedico-me a proporcionar tratamentos odontológicos com excelência técnica e atendimento personalizado.</p>
+          
+          <div class="row mt-4">
+            <div class="col-md-6 mb-4">
+              <div class="d-flex align-items-center">
+                <div class="bg-accent rounded-circle p-3 me-3">
+                  <i class="bi bi-award text-white fs-4"></i>
+                </div>
+                <div>
+                  <h5 class="mb-0">+5.000</h5>
+                  <p class="text-muted mb-0">Procedimentos</p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="col-md-6 mb-4">
+              <div class="d-flex align-items-center">
+                <div class="bg-accent rounded-circle p-3 me-3">
+                  <i class="bi bi-people text-white fs-4"></i>
+                </div>
+                <div>
+                  <h5 class="mb-0">+2.000</h5>
+                  <p class="text-muted mb-0">Pacientes</p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="col-md-6 mb-4">
+              <div class="d-flex align-items-center">
+                <div class="bg-accent rounded-circle p-3 me-3">
+                  <i class="bi bi-book text-white fs-4"></i>
+                </div>
+                <div>
+                  <h5 class="mb-0">12</h5>
+                  <p class="text-muted mb-0">Cursos</p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="col-md-6 mb-4">
+              <div class="d-flex align-items-center">
+                <div class="bg-accent rounded-circle p-3 me-3">
+                  <i class="bi bi-star text-white fs-4"></i>
+                </div>
+                <div>
+                  <h5 class="mb-0">4.9</h5>
+                  <p class="text-muted mb-0">Avaliação</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <a href="#contato" class="btn btn-dentista mt-3">Agendar Consulta</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Depoimentos -->
+  <section class="depoimentos-dentista py-5" id="depoimentos">
+    <div class="container">
+      <h2 class="text-center text-white section-title-dentista" data-aos="fade-up">O que dizem nossos pacientes</h2>
+      <p class="text-center mb-5 lead text-white-50" data-aos="fade-up" data-aos-delay="100">A satisfação dos nossos pacientes é nossa maior recompensa</p>
+      
+      <div class="row g-4">
+        <!-- Depoimento 1 -->
+        <div class="col-md-4" data-aos="fade-up">
+          <div class="depoimento-card h-100">
+            <div class="d-flex align-items-center mb-4">
+              <img src="https://randomuser.me/api/portraits/women/32.jpg" class="client-img me-3" alt="Maria Santos">
+              <div>
+                <h5 class="mb-0">Maria Santos</h5>
+                <div class="d-flex text-warning">
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                </div>
+              </div>
+            </div>
+            <p class="mb-0">
+              "Finalmente encontrei uma dentista que me deixou completamente à vontade. O tratamento foi indolor e o resultado ficou perfeito. Recomendo a todos!"
+            </p>
+          </div>
+        </div>
+        
+        <!-- Depoimento 2 -->
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="depoimento-card h-100">
+            <div class="d-flex align-items-center mb-4">
+              <img src="https://randomuser.me/api/portraits/men/45.jpg" class="client-img me-3" alt="Carlos Oliveira">
+              <div>
+                <h5 class="mb-0">Carlos Oliveira</h5>
+                <div class="d-flex text-warning">
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                </div>
+              </div>
+            </div>
+            <p class="mb-0">
+              "Implante dentário feito com perfeição. A Dra tem mão leve e todo o processo foi muito bem explicado. Estou muito satisfeito com o resultado."
+            </p>
+          </div>
+        </div>
+        
+        <!-- Depoimento 3 -->
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="depoimento-card h-100">
+            <div class="d-flex align-items-center mb-4">
+              <img src="https://randomuser.me/api/portraits/women/68.jpg" class="client-img me-3" alt="Fernanda Costa">
+              <div>
+                <h5 class="mb-0">Fernanda Costa</h5>
+                <div class="d-flex text-warning">
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                </div>
+              </div>
+            </div>
+            <p class="mb-0">
+              "Meu filho tinha medo de dentista, mas a Dra conseguiu conquistar sua confiança. Agora ele adora ir às consultas! Profissional excepcional."
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contato -->
+  <section class="contato-dentista py-5" id="contato">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 mb-5 mb-lg-0" data-aos="fade-right">
+          <h2 class="section-title-dentista mb-4">Agende sua consulta</h2>
+          <p class="lead mb-4">Preencha o formulário e entraremos em contato para confirmar seu horário.</p>
+          
+          <form>
+            <div class="mb-4">
+              <input type="text" class="form-control form-control-dentista" placeholder="Seu nome completo" required>
+            </div>
+            <div class="mb-4">
+              <input type="email" class="form-control form-control-dentista" placeholder="Seu melhor e-mail" required>
+            </div>
+            <div class="mb-4">
+              <input type="tel" class="form-control form-control-dentista" placeholder="Seu telefone com WhatsApp" required>
+            </div>
+            <div class="mb-4">
+              <select class="form-select form-control-dentista">
+                <option selected>Selecione o serviço</option>
+                <option>Clareamento Dental</option>
+                <option>Ortodontia</option>
+                <option>Implantes Dentários</option>
+                <option>Limpeza Profissional</option>
+                <option>Odontopediatria</option>
+                <option>Estética Dental</option>
+                <option>Outro</option>
+              </select>
+            </div>
+            <div class="mb-4">
+              <textarea class="form-control form-control-dentista" rows="4" placeholder="Mensagem (opcional)"></textarea>
+            </div>
+            <button type="submit" class="btn btn-dentista w-100 py-3">Enviar Agendamento</button>
+          </form>
+        </div>
+        
+        <div class="col-lg-6" data-aos="fade-left">
+          <div class="bg-light p-5 rounded-3 h-100">
+            <h3 class="mb-4">Informações de Contato</h3>
+            
+            <div class="d-flex align-items-start mb-4">
+              <div class="bg-accent rounded-circle p-3 me-3">
+                <i class="bi bi-geo-alt text-white fs-4"></i>
+              </div>
+              <div>
+                <h5 class="mb-1">Endereço</h5>
+                <p class="mb-0">Recife Pe, 1000 - Sala 123<br>RECIFE - PE</p>
+              </div>
+            </div>
+            
+            <div class="d-flex align-items-start mb-4">
+              <div class="bg-accent rounded-circle p-3 me-3">
+                <i class="bi bi-telephone text-white fs-4"></i>
+              </div>
+              <div>
+                <h5 class="mb-1">Telefone</h5>
+                <p class="mb-0">(81) 99999-9999<br>Segunda a Sexta: 8h às 19h</p>
+              </div>
+            </div>
+            
+            <div class="d-flex align-items-start mb-4">
+              <div class="bg-accent rounded-circle p-3 me-3">
+                <i class="bi bi-envelope text-white fs-4"></i>
+              </div>
+              <div>
+                <h5 class="mb-1">E-mail</h5>
+                <p class="mb-0">contato@seuemail.com.br<br>Respondemos em até 24h</p>
+              </div>
+            </div>
+            
+            <div class="mt-5">
+              <h5 class="mb-3">Redes Sociais</h5>
+              <div class="d-flex">
+                <a href="#" class="social-icon-dentista"><i class="bi bi-instagram"></i></a>
+                <a href="#" class="social-icon-dentista"><i class="bi bi-facebook"></i></a>
+                <a href="#" class="social-icon-dentista"><i class="bi bi-whatsapp"></i></a>
+                <a href="#" class="social-icon-dentista"><i class="bi bi-youtube"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mapa -->
+  <div class="mapa-dentista" style="height: 400px; background: #eee;">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.197584455441!2d-46.65867592468397!3d-23.5613461787991!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59c8da0aa315%3A0xd59f9431f2c9776a!2sAv.%20Paulista%2C%201000%20-%20Bela%20Vista%2C%20S%C3%A3o%20Paulo%20-%20SP%2C%2001310-100!5e0!3m2!1spt-BR!2sbr!4v1713469323591!5m2!1spt-BR!2sbr" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer-dentista">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 mb-4 mb-lg-0">
+          <h3 class="mb-4">NomeDoSeuConsultorio</h3>
+          <p>Odontologia de excelência com atendimento humanizado e tecnologia de ponta para cuidar do seu sorriso.</p>
+        </div>
+        
+        <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+          <h5 class="mb-4">Links</h5>
+          <ul class="list-unstyled">
+            <li class="mb-2"><a href="#home" class="footer-link">Início</a></li>
+            <li class="mb-2"><a href="#servicos" class="footer-link">Serviços</a></li>
+            <li class="mb-2"><a href="#sobre" class="footer-link">Sobre</a></li>
+            <li class="mb-2"><a href="#depoimentos" class="footer-link">Depoimentos</a></li>
+            <li class="mb-2"><a href="#contato" class="footer-link">Contato</a></li>
+          </ul>
+        </div>
+        
+        <div class="col-lg-3 col-md-4 mb-4 mb-md-0">
+          <h5 class="mb-4">Serviços</h5>
+          <ul class="list-unstyled">
+            <li class="mb-2"><a href="#" class="footer-link">Clareamento Dental</a></li>
+            <li class="mb-2"><a href="#" class="footer-link">Ortodontia</a></li>
+            <li class="mb-2"><a href="#" class="footer-link">Implantes Dentários</a></li>
+            <li class="mb-2"><a href="#" class="footer-link">Odontopediatria</a></li>
+            <li class="mb-2"><a href="#" class="footer-link">Estética Dental</a></li>
+          </ul>
+        </div>
+        
+        <div class="col-lg-3 col-md-4">
+          <h5 class="mb-4">Contato</h5>
+          <ul class="list-unstyled">
+            <li class="mb-2"><i class="bi bi-geo-alt me-2"></i> Recife Pe, 1000</li>
+            <li class="mb-2"><i class="bi bi-telephone me-2"></i> (81) 99999-9999</li>
+            <li class="mb-2"><i class="bi bi-envelope me-2"></i> contato@sorrisoperfeito.com.br</li>
+            <li class="mb-2"><i class="bi bi-clock me-2"></i> Seg-Sex: 8h às 19h</li>
+          </ul>
+        </div>
+      </div>
+      
+      <hr class="my-5" style="border-color: rgba(255, 255, 255, 0.1);">
+      
+      <div class="row align-items-center">
+        <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+          <p class="mb-0">&copy; 2025 NomeDoSeuConsultorio. Todos os direitos reservados.</p>
+        </div>
+        <div class="col-md-6 text-center text-md-end">
+          <a href="#" class="text-white me-3">Termos de Serviço</a>
+          <a href="#" class="text-white me-3">Política de Privacidade</a>
+          <a href="#home" class="text-white"><i class="bi bi-arrow-up-circle"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <!-- AOS Animation -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 800,
+      easing: 'ease-in-out',
+      once: true
+    });
+    
+    // Efeito de scroll no header
+    window.addEventListener('scroll', function() {
+      const header = document.querySelector('.header-dentista');
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+  </script>
+</body>
+</html>
