@@ -1,10 +1,10 @@
 :root {
   /* --- PALETA NOVA --- */
-  --primary-color: #000000;   /* Preto (Títulos, Textos fortes) */
-  --secondary-color: #444444; /* Um cinza escuro para apoio */
-  --accent-color: #c9b59c;    /* Dourado/Areia (Destaques, ícones) */
-  --accent-light: #dcc8b0;    /* Um tom mais claro do dourado */
-  --light-color: #eee9e5;     /* Bege Claro (Fundos) */
+  --primary-color: #000000;   /* Preto */
+  --secondary-color: #444444; /* Cinza escuro */
+  --accent-color: #c9b59c;    /* Dourado/Areia */
+  --accent-light: #dcc8b0;    /* Tom claro do dourado */
+  --light-color: #eee9e5;     /* Bege Claro */
   
   /* Gradiente Preto Elegante para o Hero */
   --gradient: linear-gradient(135deg, #1a1a1a 0%, #000000 100%);
@@ -17,8 +17,9 @@ body {
   font-family: 'Poppins', sans-serif;
   color: #333;
   overflow-x: hidden;
-  background-color: var(--light-color); /* Fundo agora é o bege claro */
-  padding-top: 80px; 
+  background-color: var(--light-color);
+  /* Espaço padrão para desktop */
+  padding-top: 140px; 
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -29,21 +30,22 @@ h1, h2, h3, h4, h5, h6 {
 
 /* --- HEADER & NAVEGAÇÃO --- */
 .header-dentista {
-  background-color: rgba(238, 233, 229, 0.95); /* Bege claro com transparência */
+  background-color: rgba(238, 233, 229, 0.98); 
   backdrop-filter: blur(10px);
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  padding: 10px 0; 
+  /* Padding zerado para a logo ocupar tudo sem margem extra */
+  padding: 0; 
   z-index: 1000;
   transition: all 0.3s ease;
   box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
 }
 
 .header-dentista.scrolled {
-  background-color: var(--light-color); /* Fica bege sólido ao rolar */
-  padding: 5px 0;
+  background-color: var(--light-color);
+  padding: 0;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
 }
 
@@ -53,19 +55,22 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--primary-color) !important;
   display: flex;
   align-items: center;
+  padding: 0; 
+  margin: 0;
 }
 
-/* LOGO */
+/* --- LOGO (Configuração Geral) --- */
 #logo {
-  max-height: 75px;
-  width: 100px;
-  height: 170px;
+  max-height: 130px; /* Tamanho Desktop */
+  width: auto;       
+  height: auto;
   transition: all 0.3s ease;
   display: block;
 }
 
+/* Logo ao rolar a página */
 .header-dentista.scrolled #logo {
-  max-height: 50px;
+  max-height: 70px; 
 }
 
 /* Links do Menu */
@@ -96,15 +101,14 @@ h1, h2, h3, h4, h5, h6 {
 /* --- HERO SECTION --- */
 .hero-dentista {
   min-height: 90vh;
-  /* Imagem de fundo */
   background: url('https://images.unsplash.com/photo-1606811841689-23dfddce3e95?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
   display: flex;
   align-items: center;
   color: white;
   position: relative;
   overflow: hidden;
-  margin-top: -80px;
-  padding-top: 100px;
+  margin-top: -140px; 
+  padding-top: 150px;
 }
 
 .hero-dentista::before {
@@ -114,8 +118,8 @@ h1, h2, h3, h4, h5, h6 {
   left: 0;
   width: 100%;
   height: 100%;
-  background: var(--gradient); /* Sobreposição preta */
-  opacity: 0.85; /* Um pouco menos transparente para o texto branco ler bem */
+  background: var(--gradient);
+  opacity: 0.85;
   z-index: 0;
 }
 
@@ -128,7 +132,7 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 3.5rem;
   font-weight: 700;
   margin-bottom: 1.5rem;
-  color: white; /* Texto branco no fundo preto fica ótimo */
+  color: white;
   line-height: 1.2;
 }
 
@@ -142,9 +146,8 @@ h1, h2, h3, h4, h5, h6 {
 
 /* --- BOTÕES --- */
 .btn-dentista {
-  background: var(--accent-color); /* Fundo Dourado Sólido ou Gradiente */
   background: var(--gradient-accent);
-  color: #000000; /* Texto PRETO no botão dourado para leitura melhor */
+  color: #000000;
   border: none;
   font-weight: 600;
   padding: 12px 30px;
@@ -178,7 +181,7 @@ h1, h2, h3, h4, h5, h6 {
 /* --- SERVIÇOS --- */
 .servicos-dentista {
   padding: 100px 0;
-  background-color: var(--light-color); /* Fundo bege */
+  background-color: var(--light-color);
 }
 
 .servico-card {
@@ -187,7 +190,7 @@ h1, h2, h3, h4, h5, h6 {
   transition: all 0.3s ease;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
   overflow: hidden;
-  background: white; /* Card branco para destacar no fundo bege */
+  background: white;
   height: 100%;
   border: 1px solid #e0e0e0;
 }
@@ -208,7 +211,7 @@ h1, h2, h3, h4, h5, h6 {
 /* --- SOBRE --- */
 .sobre-dentista {
   padding: 100px 0;
-  background-color: white; /* Alternando fundo para branco */
+  background-color: white;
 }
 
 .doutora-img {
@@ -224,7 +227,7 @@ h1, h2, h3, h4, h5, h6 {
 /* --- DEPOIMENTOS --- */
 .depoimentos-dentista {
   padding: 100px 0;
-  background: var(--gradient); /* Fundo Preto */
+  background: var(--gradient);
   color: white;
 }
 
@@ -273,7 +276,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* --- FOOTER --- */
 .footer-dentista {
-  background-color: #111111; /* Quase preto */
+  background-color: #111111;
   color: white;
   padding: 80px 0 30px;
   border-top: 5px solid var(--accent-color);
@@ -311,6 +314,24 @@ h1, h2, h3, h4, h5, h6 {
   color: black;
 }
 
+/* --- BANNER ALUGUEL --- */
+.banner-aluguel {
+  background: linear-gradient(135deg, #3c4e69 0%, #2a3b55 100%);
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+.banner-aluguel::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('https://www.transparenttextures.com/patterns/cubes.png');
+  opacity: 0.05;
+}
+
 /* --- UTILITÁRIOS GLOBAIS --- */
 .section-title-dentista {
   position: relative;
@@ -339,30 +360,25 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--accent-color);
 }
 
-/* Ajuste das estrelas de avaliação para a nova cor */
 .text-warning {
     color: var(--accent-color) !important;
 }
 
-/* --- RESPONSIVIDADE --- */
+/* --- RESPONSIVIDADE (MOBILE & TABLET) --- */
 @media (max-width: 991px) {
   .hero-title-dentista {
     font-size: 2.8rem;
   }
-  
-  .header-dentista {
-    padding: 10px 0;
-  }
-
   #logo {
-    max-height: 60px; 
+    max-height: 100px; 
   }
 }
 
 @media (max-width: 768px) {
+  /* Aumentei o padding do topo para o header maior não cobrir o texto */
   .hero-dentista {
     text-align: center;
-    padding-top: 120px;
+    padding-top: 220px; 
   }
   
   .hero-title-dentista {
@@ -383,13 +399,15 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 1.8rem;
   }
   
+  /* --- AQUI ESTÁ A MUDANÇA PARA O MOBILE --- */
   #logo {
-    max-height: 45px;
+    max-height: 120px; /* Logo bem grande no celular também */
   }
   
   .navbar-toggler {
     border: none;
-    padding: 0;
+    padding: 5px; 
+    font-size: 1.8rem; /* Ícone do menu maior para equilibrar com a logo */
   }
   
   .navbar-toggler:focus {
