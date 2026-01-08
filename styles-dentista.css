@@ -1,0 +1,398 @@
+:root {
+  /* --- PALETA NOVA --- */
+  --primary-color: #000000;   /* Preto (Títulos, Textos fortes) */
+  --secondary-color: #444444; /* Um cinza escuro para apoio */
+  --accent-color: #c9b59c;    /* Dourado/Areia (Destaques, ícones) */
+  --accent-light: #dcc8b0;    /* Um tom mais claro do dourado */
+  --light-color: #eee9e5;     /* Bege Claro (Fundos) */
+  
+  /* Gradiente Preto Elegante para o Hero */
+  --gradient: linear-gradient(135deg, #1a1a1a 0%, #000000 100%);
+  
+  /* Gradiente Dourado para Botões */
+  --gradient-accent: linear-gradient(135deg, #dcc8b0 0%, #c9b59c 100%);
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  color: #333;
+  overflow-x: hidden;
+  background-color: var(--light-color); /* Fundo agora é o bege claro */
+  padding-top: 80px; 
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+/* --- HEADER & NAVEGAÇÃO --- */
+.header-dentista {
+  background-color: rgba(238, 233, 229, 0.95); /* Bege claro com transparência */
+  backdrop-filter: blur(10px);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 10px 0; 
+  z-index: 1000;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+}
+
+.header-dentista.scrolled {
+  background-color: var(--light-color); /* Fica bege sólido ao rolar */
+  padding: 5px 0;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand-dentista {
+  font-weight: 700;
+  font-size: 1.8rem;
+  color: var(--primary-color) !important;
+  display: flex;
+  align-items: center;
+}
+
+/* LOGO */
+#logo {
+  max-height: 75px;
+  width: 100px;
+  height: 170px;
+  transition: all 0.3s ease;
+  display: block;
+}
+
+.header-dentista.scrolled #logo {
+  max-height: 50px;
+}
+
+/* Links do Menu */
+.nav-link-dentista {
+  color: var(--primary-color) !important;
+  font-weight: 500;
+  margin: 0 10px;
+  position: relative;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+}
+
+.nav-link-dentista:hover, .nav-link-dentista.active {
+  color: var(--accent-color) !important;
+}
+
+.nav-link-dentista.active::after {
+  content: '';
+  position: absolute;
+  bottom: 5px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--accent-color);
+  border-radius: 2px;
+}
+
+/* --- HERO SECTION --- */
+.hero-dentista {
+  min-height: 90vh;
+  /* Imagem de fundo */
+  background: url('https://images.unsplash.com/photo-1606811841689-23dfddce3e95?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+  display: flex;
+  align-items: center;
+  color: white;
+  position: relative;
+  overflow: hidden;
+  margin-top: -80px;
+  padding-top: 100px;
+}
+
+.hero-dentista::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--gradient); /* Sobreposição preta */
+  opacity: 0.85; /* Um pouco menos transparente para o texto branco ler bem */
+  z-index: 0;
+}
+
+.hero-content-dentista {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-title-dentista {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: white; /* Texto branco no fundo preto fica ótimo */
+  line-height: 1.2;
+}
+
+.hero-subtitle-dentista {
+  font-size: 1.25rem;
+  font-weight: 300;
+  margin-bottom: 2.5rem;
+  max-width: 600px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* --- BOTÕES --- */
+.btn-dentista {
+  background: var(--accent-color); /* Fundo Dourado Sólido ou Gradiente */
+  background: var(--gradient-accent);
+  color: #000000; /* Texto PRETO no botão dourado para leitura melhor */
+  border: none;
+  font-weight: 600;
+  padding: 12px 30px;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.btn-dentista:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+  filter: brightness(1.05);
+  color: #000000;
+}
+
+.btn-outline-dentista {
+  border: 2px solid white;
+  color: white;
+  background: transparent;
+  font-weight: 600;
+  padding: 12px 30px;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+}
+
+.btn-outline-dentista:hover {
+  background: white;
+  color: var(--primary-color);
+}
+
+/* --- SERVIÇOS --- */
+.servicos-dentista {
+  padding: 100px 0;
+  background-color: var(--light-color); /* Fundo bege */
+}
+
+.servico-card {
+  border: none;
+  border-radius: 15px;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  background: white; /* Card branco para destacar no fundo bege */
+  height: 100%;
+  border: 1px solid #e0e0e0;
+}
+
+.servico-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+  border-color: var(--accent-color);
+}
+
+.servico-icon {
+  font-size: 2.5rem;
+  color: var(--accent-color);
+  margin-bottom: 1rem;
+  display: inline-block;
+}
+
+/* --- SOBRE --- */
+.sobre-dentista {
+  padding: 100px 0;
+  background-color: white; /* Alternando fundo para branco */
+}
+
+.doutora-img {
+  border-radius: 15px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.doutora-img:hover {
+  transform: scale(1.02);
+}
+
+/* --- DEPOIMENTOS --- */
+.depoimentos-dentista {
+  padding: 100px 0;
+  background: var(--gradient); /* Fundo Preto */
+  color: white;
+}
+
+.depoimento-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 30px;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.depoimento-card:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-5px);
+  border-color: var(--accent-color);
+}
+
+.client-img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--accent-color);
+}
+
+/* --- CONTATO --- */
+.contato-dentista {
+  padding: 100px 0;
+  background-color: var(--light-color);
+}
+
+.form-control-dentista {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 15px;
+  transition: all 0.3s ease;
+  background-color: white;
+}
+
+.form-control-dentista:focus {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 0.25rem rgba(201, 181, 156, 0.25);
+  background-color: #fff;
+}
+
+/* --- FOOTER --- */
+.footer-dentista {
+  background-color: #111111; /* Quase preto */
+  color: white;
+  padding: 80px 0 30px;
+  border-top: 5px solid var(--accent-color);
+}
+
+.footer-link {
+  color: rgba(255, 255, 255, 0.6);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.footer-link:hover {
+  color: var(--accent-color);
+  transform: translateX(5px);
+}
+
+.social-icon-dentista {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: rgb(0, 0, 0);
+  margin-right: 10px;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.social-icon-dentista:hover {
+  background-color: var(--accent-color);
+  transform: translateY(-3px);
+  color: black;
+}
+
+/* --- UTILITÁRIOS GLOBAIS --- */
+.section-title-dentista {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 20px;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+.section-title-dentista:after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: var(--accent-color);
+}
+
+.bg-accent {
+  background-color: var(--accent-color);
+}
+
+.text-accent {
+  color: var(--accent-color);
+}
+
+/* Ajuste das estrelas de avaliação para a nova cor */
+.text-warning {
+    color: var(--accent-color) !important;
+}
+
+/* --- RESPONSIVIDADE --- */
+@media (max-width: 991px) {
+  .hero-title-dentista {
+    font-size: 2.8rem;
+  }
+  
+  .header-dentista {
+    padding: 10px 0;
+  }
+
+  #logo {
+    max-height: 60px; 
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-dentista {
+    text-align: center;
+    padding-top: 120px;
+  }
+  
+  .hero-title-dentista {
+    font-size: 2.2rem;
+  }
+  
+  .hero-subtitle-dentista {
+    font-size: 1.1rem;
+    margin: 0 auto 2rem auto;
+  }
+  
+  .d-flex.gap-3 {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .section-title-dentista {
+    font-size: 1.8rem;
+  }
+  
+  #logo {
+    max-height: 45px;
+  }
+  
+  .navbar-toggler {
+    border: none;
+    padding: 0;
+  }
+  
+  .navbar-toggler:focus {
+    box-shadow: none;
+  }
+}
